@@ -131,7 +131,7 @@ def get_ai_response(user_message):
             "question": user_message
         },
         config={
-            "configurable": {"session_id": "abc123"}
+            "configurable": {"session_id": "joeyTest"}
         },
     )
 
