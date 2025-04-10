@@ -6,7 +6,7 @@ from llm_with import get_ai_response
 load_dotenv()
 
 
-st.set_page_config(page_title="소득세 쳇봇", page_icon="🐱")
+st.set_page_config(page_title="알바몬 쳇봇", page_icon="🐱")
 st.title("🐱 알바몬 쳇봇")
 st.caption("알바몬에서 테스트중인 쳇봇입니다.")
 
