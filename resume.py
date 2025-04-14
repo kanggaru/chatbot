@@ -1,9 +1,18 @@
 from langchain_openai import ChatOpenAI
 from resume_config import answer_examples
+import tiktoken
 
-def get_ai_response(user_message):
-    llm = ChatOpenAI(model='gpt-4o')
+def get_model():
+    return "gpt-4o-mini"
 
+def count_tokens(text):
+    model = get_model()
+    """텍스트에서 사용된 토큰 수를 계산"""
+    encoding = tiktoken.encoding_for_model(model)
+    return len(encoding.encode(text))
+
+
+def get_prompt(user_message):
     system_prompt = (
         "당신은 채용 전문가입니다. 어떠한 이력서든 한번 보면 그 사람의 이력서를 이해할 수 있습니다."
         "지금부터 이력서의 내용을 전달 받으면, 아래의 형식으로 답변해주세요."
@@ -33,5 +42,16 @@ def get_ai_response(user_message):
 
     full_prompt = f"{system_prompt}\n\n예제:\n{examples_prompt}\n\n사용자 질문: {user_message}"
 
-    ai_message = llm.invoke(full_prompt)
+    return full_prompt
+
+    
+
+def get_ai_response(user_message):
+    model = get_model()
+    llm = ChatOpenAI(model=model)
+
+    ai_message = llm.invoke(user_message)
     return ai_message.content
+
+
+
