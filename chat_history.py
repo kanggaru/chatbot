@@ -19,7 +19,7 @@ for message in st.session_state.message_list:
        
 
 
-if user_question := st.chat_input(placeholder="저는 소득세에 관련된 RAG 학습한 봇입니다. 일반적인 질문도 받아요."):
+if user_question := st.chat_input(placeholder="이력서 내용을 입력해주시면 요약해 드려요."):
     with st.chat_message("user"):
         st.write(user_question)
     st.session_state.message_list.append({"role": "user", "content": user_question})
